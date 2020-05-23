@@ -33,7 +33,7 @@ import 'package:dio/dio.dart';
 import 'package:webview_flutter/webview_flutter.dart'; 
 ```
 
-# 4. Use the URL wich have 'filename' as param, extract the param using this function:
+# 4. Use the URL which have 'filename' as param, extract the param using this function:
 
 URL Example: http://ipv4.download.thinkbroadband.com/10MB.zip?filename=myfilezippaded.zip
 
