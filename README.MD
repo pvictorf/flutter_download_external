@@ -104,6 +104,8 @@ Future<void> _downloadFile(String fileUrl, String filename) async {
 
 # 6 Executing
 ```dart
+bool downloading = false;
+String progressString;
 String fileUrl  = "http://ipv4.download.thinkbroadband.com/10MB.zip?filename=myfilezippaded.zip";
 String filename = getFileNameURL(fileUrl);
 
