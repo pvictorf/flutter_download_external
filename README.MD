@@ -44,7 +44,7 @@ String getFileNameURL(String url) {
 }
 ```
 
-# 5. Create _downloadFile and open file function.
+# 5. Create _downloadFile and open file functions.
 ```dart
 Future<void> _downloadFile(String fileUrl, String filename) async {
    try {
