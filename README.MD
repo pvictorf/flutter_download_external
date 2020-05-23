@@ -43,9 +43,71 @@ String getFileNameURL(String url) {
 }
 ```
 
-# 5. Create _downloadFile function. Check full example in main.dart file.
+# 5. Create _downloadFile and open file function.
+```dart
+Future<void> _downloadFile(String fileUrl, String filename) async {
+   try {
+      Dio dio = Dio();
+
+      //Requesting Storage permission
+      PermissionStatus permissionStatus = await Permission.storage.request();
 
 
+      //Getting /Download folder of device
+      String dir = await ExtStorage.getExternalStoragePublicDirectory(ExtStorage.DIRECTORY_DOWNLOADS);
+
+
+      // Create a file reference with the name sent by the server
+      final String path = "${dir}/${filename}";
+
+
+      // Awaits Download Progress
+      Response response = await dio.get(fileUrl, onReceiveProgress: (rec, total) {
+        setState(() {
+          downloading = true;
+          progressString = ((rec / total) * 100).toStringAsFixed(0) + "%";
+
+          print(progressString);
+        });
+      }, options: Options(responseType: ResponseType.bytes, followRedirects: false,receiveTimeout: 0));
+
+
+      // Download finished
+      setState(() {
+        downloading = false;
+        progressString = "";
+      });
+
+      // Writing the file on real device
+      File file = new File(path);
+      await file.writeAsBytes(response.data);
+
+
+      //Openning the file
+      await openFile(path);
+
+   } catch (e) {
+      print(e);
+   }
+}
+
+   Future<void> openFile(String filePath) async {
+      final result = await OpenFile.open(filePath);
+   }
+
+   String getFileNameURL(String url) {
+      Uri uri = Uri.dataFromString(url);
+      return uri.queryParameters['filename'] ?? "";
+   }
+```
+
+# 6 Executing
+```dart
+String fileUrl  = "http://ipv4.download.thinkbroadband.com/10MB.zip?filename=myfilezippaded.zip";
+String filename = getFileNameURL(fileUrl);
+
+_downloadFile(fileUrl, filename);
+```
 
 
 
