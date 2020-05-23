@@ -102,7 +102,7 @@ Future<void> _downloadFile(String fileUrl, String filename) async {
    }
 ```
 
-# 6 Executing
+# 6. Executing
 ```dart
 bool downloading = false;
 String progressString;
