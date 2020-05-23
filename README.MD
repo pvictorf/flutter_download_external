@@ -30,7 +30,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:ext_storage/ext_storage.dart';
 import 'package:open_file/open_file.dart';
 import 'package:dio/dio.dart';
-import 'package:webview_flutter/webview_flutter.dart'; 
 ```
 
 # 4. Use the URL which have 'filename' as param, extract the param using this function:
