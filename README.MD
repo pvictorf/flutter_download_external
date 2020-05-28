@@ -1,7 +1,7 @@
 # 1. For this exemple I using Android. 
 * You need configure your AndroidManifest. Set user permission:
 ```xml
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.your_packge">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.your_package_name">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
